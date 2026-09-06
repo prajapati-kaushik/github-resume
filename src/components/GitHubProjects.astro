@@ -1,19 +1,79 @@
 ---
 import GitHubRepositoryGrid from './GitHubRepositoryGrid.astro';
 import SectionHeading from './SectionHeading.astro';
-import { site, githubProjects } from '../data/site';
-import { getFeaturedGithubRepos } from '../lib/github';
+import { site } from '../data/site';
+import { formatGithubCount, getGithubSnapshot } from '../lib/github';
 
-const repos = await getFeaturedGithubRepos(site.githubUsername, githubProjects);
+const github = await getGithubSnapshot(site.githubUsername, site.githubFeatured);
+const { profile, achievements, repos } = github;
+
+const stats = [
+	profile.publicRepos > 0
+		? { label: 'Public repos', value: formatGithubCount(profile.publicRepos) }
+		: null,
+	profile.pullRequests !== null
+		? { label: 'Pull requests', value: formatGithubCount(profile.pullRequests) }
+		: null,
+	profile.mergedPullRequests !== null
+		? { label: 'Merged PRs', value: formatGithubCount(profile.mergedPullRequests) }
+		: null,
+	profile.yearsActive > 0 ? { label: 'Years on GitHub', value: String(profile.yearsActive) } : null,
+].filter((item): item is { label: string; value: string } => item !== null);
 ---
 
 <section class="section index-feed" id="github" aria-labelledby="github-heading">
 	<SectionHeading
 		kicker="Open source"
-		title="Selected GitHub projects."
+		title="Repositories on GitHub."
 		headingId="github-heading"
 		href={site.github}
 		linkLabel="GitHub"
 	/>
+	{
+		stats.length > 0 && (
+			<dl class="github-stats">
+				{stats.map((stat) => (
+					<div>
+						<dt>{stat.label}</dt>
+						<dd>{stat.value}</dd>
+					</div>
+				))}
+			</dl>
+		)
+	}
+	{
+		achievements.length > 0 && (
+			<div class="github-achievements">
+				<p class="meta">GitHub achievements</p>
+				<ul>
+					{achievements.map((item) => (
+						<li>
+							<a class="github-achievement" href={item.url}>
+								{item.imageUrl ? (
+									<img src={item.imageUrl} alt="" width="64" height="64" />
+								) : null}
+								<span>{item.name}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		)
+	}
+	{
+		profile.languages.length > 0 && (
+			<ul class="tag-list github-languages">
+				{profile.languages.map((language) => (
+					<li>{language}</li>
+				))}
+			</ul>
+		)
+	}
 	<GitHubRepositoryGrid repos={repos} />
+	<p class="github-source">
+		Live public data from{' '}
+		<a href={site.github}>{site.githubUsername}</a>
+		{profile.company ? ` · ${profile.company.replace(/^@/, '')}` : ''}. Refreshed when the site
+		builds.
+	</p>
 </section>

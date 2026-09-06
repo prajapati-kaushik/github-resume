@@ -65,6 +65,9 @@ export const site = {
 		heading: 'Available for freelance and contract backend work.',
 		body: 'Remote from India, EU morning and afternoon overlap. PHP, Symfony, APIs and MySQL on products that last.',
 	},
+	githubFeatured: {
+		limit: 6,
+		org: 'linkorb',
+		exclude: ['prajapati-kaushik.github.io'],
+	},
 };
-
-export const githubProjects = ['anonymizer', 'alice', 'graph'];

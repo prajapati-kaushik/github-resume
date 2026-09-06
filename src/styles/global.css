@@ -100,6 +100,83 @@
 	margin-top: var(--baseline);
 }
 
+.github-stats {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1px;
+	margin: 0 0 calc(var(--baseline) * 1.5);
+	background: var(--color-line);
+	border: var(--hairline);
+}
+
+.github-stats div {
+	padding: 1.1rem 1.25rem;
+	background: var(--color-bg);
+}
+
+.github-stats dt {
+	margin: 0 0 0.35rem;
+	color: var(--color-muted);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.github-stats dd {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: clamp(1.55rem, 3vw, 2.15rem);
+	font-weight: 600;
+}
+
+.github-achievements {
+	margin: 0 0 calc(var(--baseline) * 1.25);
+}
+
+.github-achievements .meta {
+	margin-bottom: 0.85rem;
+}
+
+.github-achievements ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.github-achievement {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.45rem;
+	max-width: 7.5rem;
+	color: var(--color-muted);
+	font-size: 0.75rem;
+	text-align: center;
+}
+
+.github-achievement img {
+	display: block;
+	width: 3.4rem;
+	height: 3.4rem;
+	object-fit: contain;
+	background: transparent;
+	border: 0;
+}
+
+.github-languages {
+	margin: 0 0 calc(var(--baseline) * 1.1);
+}
+
+.github-source {
+	margin: calc(var(--baseline) * 1.1) 0 0;
+	color: var(--color-muted);
+	font-size: 0.88rem;
+}
+
 @media (max-width: 760px) {
 	.hero {
 		grid-template-columns: 1fr;
@@ -108,5 +185,9 @@
 	.portrait:not(.portrait--nav) {
 		width: 7rem;
 		height: 7rem;
+	}
+
+	.github-stats {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
