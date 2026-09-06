@@ -35,13 +35,14 @@ const jsonLd = {
 	description: site.description,
 	url: site.url,
 	email: site.email,
+	telephone: site.phoneHref.replace('tel:', ''),
 	image: absoluteUrl(site.photos[0]),
 	sameAs: [site.github, site.linkedin],
 };
 ---
 
 <!doctype html>
-<html lang={site.locale}>
+<html lang={site.locale} data-theme="dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,8 +68,7 @@ const jsonLd = {
 			(() => {
 				const applyTheme = () => {
 					const storedTheme = localStorage.getItem('theme');
-					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-					document.documentElement.dataset.theme = storedTheme || (prefersDark ? 'dark' : 'light');
+					document.documentElement.dataset.theme = storedTheme === 'light' ? 'light' : 'dark';
 				};
 				applyTheme();
 			})();

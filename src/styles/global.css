@@ -69,6 +69,30 @@
 	}
 }
 
+.contact-details {
+	display: grid;
+	gap: 1.35rem;
+	margin: 0;
+}
+
+.contact-details div {
+	display: grid;
+	gap: 0.25rem;
+}
+
+.contact-details dt {
+	color: var(--color-muted);
+	font-size: 0.82rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.contact-details dd {
+	margin: 0;
+	font-size: 1.05rem;
+}
+
 .card-links {
 	display: flex;
 	flex-wrap: wrap;
