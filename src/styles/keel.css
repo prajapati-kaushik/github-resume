@@ -113,7 +113,7 @@ a {
   text-decoration: none;
 }
 
-a:not(.brand, .button, .skip-link, .theme-toggle) {
+a:not(.brand, .button, .skip-link, .theme-toggle, .github-achievement) {
   background-image: linear-gradient(var(--color-accent), var(--color-accent));
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -123,7 +123,7 @@ a:not(.brand, .button, .skip-link, .theme-toggle) {
     color 180ms ease;
 }
 
-a:not(.brand, .button, .skip-link, .theme-toggle):hover {
+a:not(.brand, .button, .skip-link, .theme-toggle, .github-achievement):hover {
   color: var(--color-accent-hover);
   background-size: 100% 1px;
 }

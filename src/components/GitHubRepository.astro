@@ -1,24 +1,42 @@
 ---
 import type { GithubRepository } from '../lib/github';
+import { formatGithubCount, formatGithubDate } from '../lib/github';
 
 interface Props {
 	repo: GithubRepository;
 }
 
 const { repo } = Astro.props;
-const updated = repo.updatedAt
-	? new Date(repo.updatedAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
-	: null;
+const pushed = formatGithubDate(repo.pushedAt);
+const isContribution = (repo.mergedPullRequests ?? 0) > 0;
+const owner = repo.fullName.includes('/') ? repo.fullName.split('/')[0] : null;
+const starCount = repo.stars;
+const starLabel = starCount === 1 ? 'star' : 'stars';
+const kind = [owner && owner !== repo.name ? owner : null, repo.language, isContribution ? 'Contributor' : null]
+	.filter(Boolean)
+	.join(' · ');
 ---
 
 <article class="highlight-card">
 	<div>
-		<p class="meta">{repo.language ?? 'Repository'}</p>
+		<p class="meta">{kind || 'Repository'}</p>
 		<h3>
 			<a href={repo.htmlUrl}>{repo.name}</a>
 		</h3>
 		<p>{repo.description}</p>
-		<p class="meta">{repo.stars} stars{updated ? ` · ${updated}` : ''}</p>
+		{
+			(isContribution || starCount > 0 || pushed) && (
+				<p class="meta">
+					{isContribution
+						? `${formatGithubCount(repo.mergedPullRequests ?? 0)} merged PRs`
+						: ''}
+					{isContribution && (starCount > 0 || pushed) ? ' · ' : ''}
+					{!isContribution && starCount > 0 ? `${formatGithubCount(starCount)} ${starLabel}` : ''}
+					{!isContribution && starCount > 0 && pushed ? ' · ' : ''}
+					{pushed}
+				</p>
+			)
+		}
 		<div class="card-links">
 			<a class="text-link" href={repo.htmlUrl}>GitHub</a>
 		</div>
