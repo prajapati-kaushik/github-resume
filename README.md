@@ -46,9 +46,9 @@ Featured repositories are fetched at **build time** from the GitHub API. If the 
 
 ## Deployment
 
-Push to `main`. GitHub Actions builds the static site and deploys to GitHub Pages.
+Push to `main`. GitHub Actions builds the static site and deploys to GitHub Pages at [https://prajapati-kaushik.github.io](https://prajapati-kaushik.github.io).
 
-Production URL and base path are set in `astro.config.mjs` (`site` and `base`) so a custom domain can replace GitHub Pages later without rewriting components.
+The GitHub repo must be named `prajapati-kaushik.github.io` so Pages serves the user site at the root URL. Production `site` and `base` are set in `astro.config.mjs`.
 
 ## Project structure
 

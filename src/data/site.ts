@@ -6,7 +6,7 @@ export const site = {
 		'Senior Backend Engineer (PHP/Symfony) | Remote from India | EU time overlap | Freelance / Contract',
 	description:
 		'Senior Software Engineer (PHP, Symfony). Production backends, APIs and architecture — delivered with a Dutch organisation and international teams.',
-	url: 'https://prajapati-kaushik.github.io/github-resume',
+	url: 'https://prajapati-kaushik.github.io',
 	github: 'https://github.com/prajapati-kaushik',
 	githubUsername: 'prajapati-kaushik',
 	linkedin: 'https://www.linkedin.com/in/kaushik-prajapati/',
