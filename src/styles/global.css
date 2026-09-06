@@ -1,0 +1,88 @@
+@import "./keel.css";
+
+:root {
+	--color-border: var(--color-line);
+	--color-focus: var(--color-accent);
+	--font-sans: var(--font-body);
+	--font-serif: var(--font-display);
+}
+
+.skip-link {
+	position: absolute;
+	left: var(--page-pad);
+	top: -100%;
+	z-index: 200;
+	padding: 0.6rem 0.9rem;
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+	font-weight: 700;
+}
+
+.skip-link:focus {
+	top: 0.75rem;
+}
+
+.hero {
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: start;
+	gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.hero-copy {
+	min-width: 0;
+}
+
+.page-head-portrait {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.5rem 1.75rem;
+}
+
+.portrait {
+	display: block;
+	width: 8.5rem;
+	height: 8.5rem;
+	flex-shrink: 0;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 3px solid var(--color-bg);
+	outline: 1px solid var(--color-line);
+	background: var(--color-soft);
+}
+
+.portrait--nav {
+	width: 2.35rem;
+	height: 2.35rem;
+	border-width: 2px;
+	outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.portrait {
+		transition: transform 180ms ease;
+	}
+
+	.portrait:hover,
+	.brand:hover .portrait--nav {
+		transform: scale(1.02);
+	}
+}
+
+.card-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem 1.25rem;
+	margin-top: var(--baseline);
+}
+
+@media (max-width: 760px) {
+	.hero {
+		grid-template-columns: 1fr;
+	}
+
+	.portrait:not(.portrait--nav) {
+		width: 7rem;
+		height: 7rem;
+	}
+}

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+import { url } from '../lib/url';
+---
+
+<BaseLayout title={`Page not found | ${site.name}`} description="That page does not exist." canonicalPath="/404/">
+	<section class="section page-head">
+		<p class="eyebrow">404</p>
+		<h1>This page is not here.</h1>
+		<p class="lead">The link may be outdated. The work, notes, and about pages are still available.</p>
+		<div class="action-row">
+			<Button href={url('/')}>Back to the homepage</Button>
+		</div>
+	</section>
+</BaseLayout>

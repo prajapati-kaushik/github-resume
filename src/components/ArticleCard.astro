@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/url';
+
+interface Props {
+	article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const date = article.data.pubDate.toLocaleDateString('en-GB', {
+	day: 'numeric',
+	month: 'short',
+	year: 'numeric',
+});
+---
+
+<article class="note-row">
+	<div>
+		<p class="meta">{date}</p>
+		<h3>
+			<a href={url(`/notes/${article.id}/`)}>{article.data.title}</a>
+		</h3>
+		<p>{article.data.description}</p>
+	</div>
+</article>

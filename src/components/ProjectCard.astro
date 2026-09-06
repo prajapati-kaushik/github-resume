@@ -1,0 +1,44 @@
+---
+import { url } from '../lib/url';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="highlight-card">
+	<div>
+		<p class="meta">{project.data.category}</p>
+		<h3>
+			<a href={url(`/work/${project.id}/`)}>{project.data.title}</a>
+		</h3>
+		<p>{project.data.description}</p>
+		{
+			project.data.technologies.length > 0 && (
+				<ul class="tag-list">
+					{project.data.technologies.slice(0, 5).map((tech) => (
+						<li>{tech}</li>
+					))}
+				</ul>
+			)
+		}
+		<div class="card-links">
+			<a class="text-link" href={url(`/work/${project.id}/`)}>
+				Case study
+			</a>
+			{project.data.website && (
+				<a class="text-link" href={project.data.website}>
+					Product
+				</a>
+			)}
+			{project.data.github && (
+				<a class="text-link" href={project.data.github}>
+					GitHub
+				</a>
+			)}
+		</div>
+	</div>
+</article>

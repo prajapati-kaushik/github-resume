@@ -1,0 +1,15 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+---
+
+<section class="section about-closing" id="contact" aria-labelledby="contact-heading">
+	<p class="eyebrow">Contact</p>
+	<h2 id="contact-heading">{site.contact.heading}</h2>
+	<p class="lead">{site.contact.body}</p>
+	<div class="action-row">
+		<Button href={`mailto:${site.email}`}>Email</Button>
+		<Button href={site.linkedin} variant="ghost">LinkedIn</Button>
+		<Button href={site.github} variant="ghost">GitHub</Button>
+	</div>
+</section>

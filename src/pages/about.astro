@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import Portrait from '../components/Portrait.astro';
+import { site } from '../data/site';
+import { url } from '../lib/url';
+
+const pages = await getCollection('pages');
+const about = pages.find((page) => page.id === 'about');
+
+if (!about) {
+	throw new Error('Missing src/content/pages/about.md');
+}
+
+const { Content } = await render(about);
+---
+
+<BaseLayout
+	title={`About | ${site.name}`}
+	description={about.data.description}
+	canonicalPath="/about/"
+>
+	<section class="section page-head">
+		<div class="page-head-portrait">
+			<Portrait
+				class="portrait"
+				alt={`${site.name}, ${site.title}`}
+				width={346}
+				height={346}
+			/>
+			<div>
+				<p class="eyebrow">About</p>
+				<h1>{site.name}</h1>
+				<p class="lead">{site.headline}</p>
+			</div>
+		</div>
+	</section>
+	<section class="section prose-grid">
+		<div></div>
+		<div class="prose">
+			<Content />
+			{
+				about.data.cvUrl && (
+					<p>
+						<a class="text-link" href={url(about.data.cvUrl)}>
+							Download CV (PDF)
+						</a>
+					</p>
+				)
+			}
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import Button from '../../components/Button.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+	title={`Work | ${site.name}`}
+	description="Selected PHP/Symfony work: live healthcare platforms, billing products, and customer-facing applications."
+	canonicalPath="/work/"
+>
+	<section class="section page-head">
+		<p class="eyebrow">Work</p>
+		<h1>Selected work.</h1>
+		<p class="lead">
+			Production work I can discuss without confidential internals. Each piece shows the problem, what I delivered, and the value for a team.
+		</p>
+		<div class="action-row">
+			<Button href={site.github}>GitHub</Button>
+		</div>
+	</section>
+	<section class="section">
+		<ProjectGrid projects={projects} />
+	</section>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import Portrait from './Portrait.astro';
+import { site } from '../data/site';
+import { url } from '../lib/url';
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+	if (href.startsWith('http') || href.includes('#')) return false;
+	const full = url(href);
+	return href === '/' ? currentPath === full : currentPath.startsWith(full);
+};
+---
+
+<header class="site-header">
+	<a class="brand" href={url('/')} aria-label={`${site.name} home`}>
+		<Portrait class="portrait portrait--nav" width={80} height={80} />
+		<span>{site.name}</span>
+	</a>
+	<nav class="site-nav" aria-label="Primary">
+		{
+			site.navigation.map((item) => (
+				<a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
+					{item.label}
+				</a>
+			))
+		}
+	</nav>
+	<button class="theme-toggle" type="button" aria-label="Toggle color theme" data-theme-toggle>
+		<span aria-hidden="true"></span>
+	</button>
+</header>

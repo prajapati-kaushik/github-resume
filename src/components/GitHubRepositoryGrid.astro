@@ -1,0 +1,14 @@
+---
+import GitHubRepository from './GitHubRepository.astro';
+import type { GithubRepository as Repo } from '../lib/github';
+
+interface Props {
+	repos: Repo[];
+}
+
+const { repos } = Astro.props;
+---
+
+<div class="highlight-grid">
+	{repos.map((repo) => <GitHubRepository repo={repo} />)}
+</div>

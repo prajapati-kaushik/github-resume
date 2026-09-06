@@ -1,0 +1,69 @@
+---
+import About from '../components/About.astro';
+import Architecture from '../components/Architecture.astro';
+import ArticleList from '../components/ArticleList.astro';
+import Contact from '../components/Contact.astro';
+import ExpertiseBar from '../components/ExpertiseBar.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import GitHubProjects from '../components/GitHubProjects.astro';
+import Hero from '../components/Hero.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+import { getCollection } from 'astro:content';
+
+const [projects, articles, experience, pages] = await Promise.all([
+	getCollection('projects'),
+	getCollection('articles'),
+	getCollection('experience'),
+	getCollection('pages'),
+]);
+
+const featuredProjects = projects
+	.filter((project) => project.data.featured)
+	.sort((a, b) => a.data.order - b.data.order);
+
+const featuredNotes = articles
+	.filter((article) => article.data.featured)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const roles = experience.sort((a, b) => a.data.order - b.data.order);
+const about = pages.find((page) => page.id === 'about');
+const aboutExcerpt =
+	about?.body
+		.split('\n\n')
+		.find((block) => block && !block.startsWith('#') && !block.startsWith('---'))
+		?.replace(/\s+/g, ' ')
+		.trim() ?? about?.data.description ?? '';
+---
+
+<BaseLayout>
+	<Hero />
+	<ExpertiseBar />
+	{aboutExcerpt && <About excerpt={aboutExcerpt} />}
+	<section class="section index-feed" id="work" aria-labelledby="work-heading">
+		<SectionHeading
+			kicker="Portfolio"
+			title="Selected work."
+			headingId="work-heading"
+			href={url('/work/')}
+			linkLabel="All work"
+		/>
+		<ProjectGrid projects={featuredProjects} />
+	</section>
+	<Architecture />
+	<GitHubProjects />
+	<section class="section index-feed" id="notes" aria-labelledby="notes-heading">
+		<SectionHeading
+			kicker="Writing"
+			title="Engineering notes."
+			headingId="notes-heading"
+			href={url('/notes/')}
+			linkLabel="All notes"
+		/>
+		<ArticleList articles={featuredNotes} />
+	</section>
+	<ExperienceTimeline items={roles} />
+	<Contact />
+</BaseLayout>

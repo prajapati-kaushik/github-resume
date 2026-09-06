@@ -1,0 +1,20 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { formatTenure } from '../lib/dates';
+
+interface Props {
+	item: CollectionEntry<'experience'>;
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<article>
+	<span>{formatTenure(item.data.startDate, item.data.endDate)}</span>
+	<h3>{item.data.role}</h3>
+	<p>{item.data.company}</p>
+	<div class="prose">
+		<Content />
+	</div>
+</article>

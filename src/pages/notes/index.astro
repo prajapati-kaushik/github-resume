@@ -1,0 +1,25 @@
+---
+import ArticleList from '../../components/ArticleList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title={`Engineering notes | ${site.name}`}
+	description="Short notes on live-platform modernisation, billing architecture, and production-minded AI."
+	canonicalPath="/notes/"
+>
+	<section class="section page-head">
+		<p class="eyebrow">Notes</p>
+		<h1>Engineering notes.</h1>
+		<p class="lead">Practical notes from production PHP work — aimed at teams that have to keep shipping.</p>
+	</section>
+	<section class="section">
+		<ArticleList articles={articles} />
+	</section>
+</BaseLayout>

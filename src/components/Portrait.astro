@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+import { url } from '../lib/url';
+
+interface Props {
+	class?: string;
+	alt?: string;
+	width: number;
+	height: number;
+}
+
+const { class: className, alt = '', width, height } = Astro.props;
+---
+
+<img
+	class={className}
+	data-portrait
+	src={url(site.photos[0])}
+	alt={alt}
+	width={width}
+	height={height}
+/>

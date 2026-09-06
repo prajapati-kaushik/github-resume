@@ -1,0 +1,46 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { site } from '../../data/site';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<ArticleLayout
+	title={`${project.data.title} | ${site.name}`}
+	heading={project.data.title}
+	description={project.data.description}
+	canonicalPath={`/work/${project.id}/`}
+	meta={project.data.category}
+>
+	<ul class="tag-list">
+		{project.data.technologies.map((tech) => (
+			<li>{tech}</li>
+		))}
+	</ul>
+	<div class="card-links">
+		{project.data.website && (
+			<a class="text-link" href={project.data.website}>
+				Product site
+			</a>
+		)}
+		{project.data.github && (
+			<a class="text-link" href={project.data.github}>
+				GitHub
+			</a>
+		)}
+		<a class="text-link" href={site.github}>
+			All GitHub
+		</a>
+	</div>
+	<Content />
+</ArticleLayout>

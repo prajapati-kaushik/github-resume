@@ -1,0 +1,19 @@
+---
+import GitHubRepositoryGrid from './GitHubRepositoryGrid.astro';
+import SectionHeading from './SectionHeading.astro';
+import { site, githubProjects } from '../data/site';
+import { getFeaturedGithubRepos } from '../lib/github';
+
+const repos = await getFeaturedGithubRepos(site.githubUsername, githubProjects);
+---
+
+<section class="section index-feed" id="github" aria-labelledby="github-heading">
+	<SectionHeading
+		kicker="Open source"
+		title="Selected GitHub projects."
+		headingId="github-heading"
+		href={site.github}
+		linkLabel="GitHub"
+	/>
+	<GitHubRepositoryGrid repos={repos} />
+</section>

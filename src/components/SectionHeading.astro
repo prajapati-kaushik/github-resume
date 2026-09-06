@@ -1,0 +1,17 @@
+---
+interface Props {
+	kicker?: string;
+	title: string;
+	headingId?: string;
+	href?: string;
+	linkLabel?: string;
+}
+
+const { kicker, title, headingId, href, linkLabel } = Astro.props;
+---
+
+<div class="section-heading">
+	{kicker && <p class="eyebrow">{kicker}</p>}
+	<h2 id={headingId}>{title}</h2>
+	{href && linkLabel && <a class="text-link" href={href}>{linkLabel}</a>}
+</div>

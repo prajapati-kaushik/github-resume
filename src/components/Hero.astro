@@ -1,0 +1,25 @@
+---
+import Button from './Button.astro';
+import Portrait from './Portrait.astro';
+import { site } from '../data/site';
+import { url } from '../lib/url';
+---
+
+<section class="hero section">
+	<div class="hero-copy">
+		<p class="eyebrow">{site.hero.kicker}</p>
+		<h1>{site.hero.heading}</h1>
+		<p class="lead">{site.hero.body}</p>
+		<div class="action-row">
+			<Button href={url('/work/')}>View my work</Button>
+			<Button href={site.github} variant="ghost">GitHub</Button>
+			<Button href={site.linkedin} variant="ghost">LinkedIn</Button>
+		</div>
+	</div>
+	<Portrait
+		class="portrait"
+		alt={`${site.name}, ${site.title}`}
+		width={346}
+		height={346}
+	/>
+</section>

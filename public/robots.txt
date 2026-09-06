@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prajapati-kaushik.github.io/github-resume/sitemap-index.xml
