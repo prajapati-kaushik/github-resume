@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+	title={`Contact | ${site.name}`}
+	description="Email and mobile for freelance and contract backend work. Remote from India, EU time overlap."
+	canonicalPath="/contact/"
+>
+	<section class="section page-head">
+		<p class="eyebrow">Contact</p>
+		<h1>Get in touch.</h1>
+		<p class="lead">{site.contact.body}</p>
+		<div class="action-row">
+			<Button href={`mailto:${site.email}`}>Email</Button>
+			<Button href={site.phoneHref} variant="ghost">Call</Button>
+		</div>
+	</section>
+	<section class="section prose-grid">
+		<div></div>
+		<dl class="contact-details">
+			<div>
+				<dt>Email</dt>
+				<dd>
+					<a href={`mailto:${site.email}`}>{site.email}</a>
+				</dd>
+			</div>
+			<div>
+				<dt>Mobile</dt>
+				<dd>
+					<a href={site.phoneHref}>{site.phone}</a>
+				</dd>
+			</div>
+			<div>
+				<dt>LinkedIn</dt>
+				<dd>
+					<a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+						linkedin.com/in/kaushik-prajapati
+					</a>
+				</dd>
+			</div>
+			<div>
+				<dt>GitHub</dt>
+				<dd>
+					<a href={site.github} target="_blank" rel="noopener noreferrer">
+						github.com/prajapati-kaushik
+					</a>
+				</dd>
+			</div>
+		</dl>
+	</section>
+</BaseLayout>
