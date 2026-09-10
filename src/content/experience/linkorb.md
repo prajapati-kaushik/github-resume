@@ -1,17 +1,17 @@
 ---
 company: "LinkORB Engineering"
-role: "Senior Backend Engineer (PHP/Symfony) — Freelance / Contract"
+role: "Senior Engineer — Freelance / Contract"
 startDate: "2015-01"
 endDate: null
 order: 1
 location: "Remote from India · EU time overlap"
 ---
 
-Eleven years remote, overlapping European morning and afternoon hours. PHP/Symfony backends, APIs and MySQL on long-running products including [ZwangerenPortaal.nl](https://www.zwangerenportaal.nl/).
+Eleven years with a Dutch product company, overlapping European morning and afternoon hours. I help keep live products running and growing — including [ZwangerenPortaal.nl](https://www.zwangerenportaal.nl/), a patient portal used by millions of new parents.
 
-### How I help the organisation
+### Value to the organisation
 
-- Keep live systems reliable while they are still in use
-- Improve and extend backends without stopping the product
-- Independent delivery, clear communication with a European team
-- Consumer-facing platforms and internal tools, not only short projects
+- The product stays available while it still has to change
+- New capabilities ship without a “stop everything and rewrite” moment
+- Independent delivery, explained in language a European team can act on
+- Long-running product work, not a short visit

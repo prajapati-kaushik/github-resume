@@ -32,6 +32,24 @@
 	min-width: 0;
 }
 
+.availability-badge {
+	display: inline-block;
+	margin: 0.75rem 0 0.5rem;
+	padding: 0.4rem 0.85rem;
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+	font-size: 0.82rem;
+	font-weight: 600;
+	border-radius: 2rem;
+}
+
+.availability-note {
+	margin: 1rem 0;
+	padding: 0.5rem 0;
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
 .page-head-portrait {
 	display: flex;
 	flex-wrap: wrap;
@@ -175,6 +193,45 @@
 	margin: calc(var(--baseline) * 1.1) 0 0;
 	color: var(--color-muted);
 	font-size: 0.88rem;
+}
+
+.testimonials {
+	max-width: 42rem;
+}
+
+.testimonial-list {
+	display: grid;
+	gap: 2rem;
+}
+
+.testimonial {
+	margin: 0;
+	padding: 0;
+}
+
+.testimonial p {
+	margin: 0 0 1rem;
+	font-size: 1.15rem;
+	line-height: 1.65;
+	font-style: italic;
+	color: var(--color-body);
+}
+
+.testimonial footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.35rem 0.75rem;
+}
+
+.testimonial cite {
+	font-style: normal;
+	font-weight: 600;
+}
+
+.testimonial-role {
+	color: var(--color-muted);
+	font-size: 0.9rem;
 }
 
 @media (max-width: 760px) {

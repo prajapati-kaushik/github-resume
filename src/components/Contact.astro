@@ -8,9 +8,10 @@ import { url } from '../lib/url';
 	<p class="eyebrow">Contact</p>
 	<h2 id="contact-heading">{site.contact.heading}</h2>
 	<p class="lead">{site.contact.body}</p>
+	{site.availability && <p class="availability-note">{site.availability}</p>}
 	<div class="action-row">
-		<Button href={`mailto:${site.email}`}>Email</Button>
+		<Button href={`mailto:${site.email}`}>Start a conversation</Button>
 		<Button href={site.phoneHref} variant="ghost">Call</Button>
-		<Button href={url('/contact/')} variant="ghost">Contact details</Button>
+		<Button href={url('/contact/')} variant="ghost">All contact details</Button>
 	</div>
 </section>

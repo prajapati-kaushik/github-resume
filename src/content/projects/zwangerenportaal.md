@@ -14,20 +14,25 @@ technologies:
 website: "https://www.zwangerenportaal.nl/"
 ---
 
-## Why it matters
+## The problem
 
-[ZwangerenPortaal.nl](https://www.zwangerenportaal.nl/) is a patient portal in the Netherlands (2.5M+ new parents), built with [LinkORB Engineering](http://engineering.linkorb.com/) alongside products such as [Perinatologie.nl](https://www.perinatologie.nl/). Downtime and reckless rewrites are not options.
+[ZwangerenPortaal.nl](https://www.zwangerenportaal.nl/) is a patient portal in the Netherlands serving over 2.5 million new parents, built with [LinkORB Engineering](http://engineering.linkorb.com/). Healthcare software cannot go down for rewrites — expectant parents and midwives depend on it daily. The challenge: improve the architecture and add new features without disrupting a system that must stay live.
 
-## What I delivered
+## My approach
 
-- Core PHP/Symfony platform services on a live healthcare stack
-- APIs and integrations with systems already in use
-- Incremental migration of legacy PHP toward maintainable Symfony modules
+I worked as part of the backend team for over a decade, delivering incremental improvements rather than risky big-bang changes:
 
-## For an organisation
+- **Incremental migration**: Moved legacy PHP code toward maintainable Symfony modules, one domain at a time
+- **API development**: Built and extended APIs that integrate with hospital systems, appointment scheduling, and patient records
+- **Zero-downtime deployments**: Structured releases so the platform stayed available through every change
+- **Long-term ownership**: Understood the full system deeply enough to make safe, confident changes
 
-This is **long-running product engineering**: keep the live system reliable, improve it, ship new backend work. Remote from India, on EU hours, as freelance / contract.
+## Results
 
-## Outcome
+- Platform has shipped continuously for 10+ years without major outages during my tenure
+- New features now land in well-structured Symfony code instead of accumulating technical debt
+- Backend architecture supports the product roadmap without requiring a rewrite
 
-The platform continues to ship. New work has a Symfony home instead of accumulating only in the oldest code.
+## For organisations
+
+This is what **long-running product engineering** looks like: keep the live system reliable, improve it in safe steps, and ship new backend work — all while remote from India on EU hours.

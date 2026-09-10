@@ -9,6 +9,7 @@ import GitHubProjects from '../components/GitHubProjects.astro';
 import Hero from '../components/Hero.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import Testimonials from '../components/Testimonials.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../lib/url';
 import { getCollection } from 'astro:content';
@@ -42,6 +43,7 @@ const aboutExcerpt =
 	<Hero />
 	<ExpertiseBar />
 	{aboutExcerpt && <About excerpt={aboutExcerpt} />}
+	<Testimonials />
 	<section class="section index-feed" id="work" aria-labelledby="work-heading">
 		<SectionHeading
 			kicker="Portfolio"
