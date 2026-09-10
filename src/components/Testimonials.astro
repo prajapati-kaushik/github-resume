@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site';
+
+const testimonials = site.testimonials ?? [];
+---
+
+{
+	testimonials.length > 0 && (
+		<section class="section testimonials" aria-labelledby="testimonials-heading">
+			<p class="eyebrow">What others say</p>
+			<h2 id="testimonials-heading">Recommendations.</h2>
+			<div class="testimonial-list">
+				{testimonials.map((item) => (
+					<blockquote class="testimonial">
+						<p>"{item.quote}"</p>
+						<footer>
+							<cite>
+								{item.linkedin ? (
+									<a href={item.linkedin}>{item.name}</a>
+								) : (
+									item.name
+								)}
+							</cite>
+							{item.role && <span class="testimonial-role">{item.role}</span>}
+						</footer>
+					</blockquote>
+				))}
+			</div>
+		</section>
+	)
+}
